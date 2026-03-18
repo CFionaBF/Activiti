@@ -224,13 +224,8 @@
     <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
     <sonar-maven-plugin.version>5.5.0.6356</sonar-maven-plugin.version>
     <spring-boot.version>4.0.3</spring-boot.version>
-    <spring-framework.version>7.0.5</spring-framework.version>
-    <h2.version>2.4.240</h2.version>
-    <jakarta.el-api.version>5.0.1</jakarta.el-api.version>
-    <testcontainers.version>2.0.3</testcontainers.version>
+    <jakarta.el-api.version>6.0.1</jakarta.el-api.version>
     <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
-    <jackson.version>3.0.4</jackson.version>
-    <tomcat-embed-core.version>10.1.52</tomcat-embed-core.version>
 
     <!-- configuration properties for tests -->
     <generated-assertions-folder>
@@ -240,19 +235,6 @@
   </properties>
   <dependencyManagement>
     <dependencies>
-      <!-- temporary security fix AAE-36930 -->
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.20.0</version>
-      </dependency>
-      <!-- temporary security fix -->
-      <!-- security fix AAE-41710, remove with Spring update -->
-      <dependency>
-        <groupId>org.assertj</groupId>
-        <artifactId>assertj-core</artifactId>
-        <version>3.27.7</version>
-      </dependency>
       <!-- security fix AAE-41710 -->
       <dependency>
         <groupId>org.activiti</groupId>
@@ -261,45 +243,13 @@
         <type>xml</type>
         <classifier>suppression</classifier>
       </dependency>
-      <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <version>${h2.version}</version>
-      </dependency>
-      <!-- AAE-40315 Override testcontainers version to fix Docker compatibility issue -->
-      <dependency>
-        <groupId>org.testcontainers</groupId>
-        <artifactId>testcontainers-bom</artifactId>
-        <version>${testcontainers.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <!-- AAE-42877 Update jackson to fix security issue - must come before Spring Boot BOM -->
-      <dependency>
-        <groupId>tools.jackson</groupId>
-        <artifactId>jackson-bom</artifactId>
-        <version>${jackson.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
         <version>${spring-boot.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <!-- Security fix AAE-42677 -->
-      <dependency>
-        <groupId>org.apache.tomcat.embed</groupId>
-        <artifactId>tomcat-embed-core</artifactId>
-        <version>${tomcat-embed-core.version}</version>
-      </dependency>
-      <!-- Security fix AAE-42677 -->
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-core</artifactId>
-        <version>${spring-framework.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
